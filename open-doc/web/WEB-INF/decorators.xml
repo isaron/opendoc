@@ -1,0 +1,13 @@
+<decorators defaultdir="/pages">
+
+	<!-- 配置模板页面，及过滤页面路径 -->
+	<decorator name="decorator" page="decorator.jsp">
+		<pattern>*</pattern>
+	</decorator>
+	
+	<!-- 配置不过滤的页面 -->
+	<excludes>
+		<!-- <pattern>/excludes.jsp</pattern> -->
+	</excludes>
+	
+</decorators>

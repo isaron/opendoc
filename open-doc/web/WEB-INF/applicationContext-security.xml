@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  - Application context containing authentication, channel
+  - security and web URI beans.
+  -
+  - Only used by "filter" artifact.
+  -
+  -->
+
+<b:beans xmlns="http://www.springframework.org/schema/security"
+    xmlns:b="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                        http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd">
+
+    <!-- don't filter login page. -->
+    <http pattern="/css/*" security="none" />
+	<http pattern="/scripts/*" security="none" />
+	<http pattern="/img/*" security="none" />
+	<http pattern="/css/buttons/css/*" security="none" />
+	<http pattern="/index.jsp" security="none" />
+	
+	<http access-denied-page="/pages/denied.jsp">
+		<form-login login-page="/index.jsp" authentication-failure-url="/index.jsp?error=true"
+		 always-use-default-target="true" default-target-url="/pages/default.jsp" />
+		 
+		<!-- users access to /** resource must has ROLE_USER role -->
+		<intercept-url pattern="/**" access="ROLE_USER" />
+		
+		<!-- 增加一个filter，这点与Acegi是不一样的，不能修改默认的filter了，这个filter位于FILTER_SECURITY_INTERCEPTOR之前 -->
+		<custom-filter ref="myFilter" before="FILTER_SECURITY_INTERCEPTOR" />
+	</http>
+	
+	<!-- 一个自定义的filter，必须包含authenticationManager,accessDecisionManager,securityMetadataSource三个属性，我们的所有控制将在这三个类中实现，解释详见具体配置 -->
+    <b:bean id="myFilter" class="com.cloud.security.config.MyFilterSecurityInterceptor">
+        <b:property name="authenticationManager" ref="authenticationManager" />
+        <b:property name="accessDecisionManager" ref="myAccessDecisionManagerBean" />
+        <b:property name="securityMetadataSource" ref="securityMetadataSource" />
+    </b:bean>
+	
+	<!-- 认证管理器，实现用户认证的入口，主要实现UserDetailsService接口即可 -->
+	<authentication-manager alias="authenticationManager">
+		<authentication-provider user-service-ref="myUserDetailService">
+			<password-encoder hash="md5" />
+		</authentication-provider>
+	</authentication-manager>
+	
+	<b:bean id="myUserDetailService"
+         class="com.cloud.security.config.MyUserDetailService" />
+         
+    <!-- 访问决策器，决定某个用户具有的角色，是否有足够的权限去访问某个资源 -->
+    <b:bean id="myAccessDecisionManagerBean"
+         class="com.cloud.security.config.MyAccessDecisionManager" />
+     
+    <!-- 资源源数据定义，即定义某一资源可以被哪些角色访问 -->
+    <b:bean id="securityMetadataSource"
+         class="com.cloud.security.config.MyInvocationSecurityMetadataSource" />
+
+</b:beans>
