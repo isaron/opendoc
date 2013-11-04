@@ -1,11 +1,11 @@
 <?xml version="1.0" ?>
 <project name ="ppm-platform for doc" default="ppm-platform">
 
-	<property name="ppm-base-dir" value="D:\apache-tomcat-6.0.37\webapps" />
+	<property name="ppm-base-dir" value="\Applications\tomcat6\webapps" />
 	<property name="ppm-project-dir" value ="${ppm-base-dir}\open-doc" />
 	
 	<path id="lib_classpath">
-		<fileset dir="WebRoot/WEB-INF/lib/">
+		<fileset dir="web/WEB-INF/lib/">
 			<include name="*.jar" />
 		</fileset>
 	</path>
@@ -21,23 +21,23 @@
 		<echo message="build ppm-platfrom-web start!" />
 
 		<copy todir="${ppm-project-dir}${scripts-dir}">
-			<fileset dir="WebRoot\scripts" />
+			<fileset dir="web\scripts" />
 		</copy>
 
 		<copy todir="${ppm-project-dir}${css-dir}">
-			<fileset dir="WebRoot\css" />
+			<fileset dir="web\css" />
 		</copy>
 
 		<copy todir="${ppm-project-dir}${img-dir}">
-			<fileset dir="WebRoot\img" />
+			<fileset dir="web\img" />
 		</copy>
 		
 		<copy todir="${ppm-project-dir}${pages-dir}">
-			<fileset dir="WebRoot\pages" />
+			<fileset dir="web\pages" />
 		</copy>
 		
 		<copy todir="${ppm-project-dir}${tags-dir}">
-			<fileset dir="WebRoot\WEB-INF\tags" />
+			<fileset dir="web\WEB-INF\tags" />
 		</copy>
 	</target>
 

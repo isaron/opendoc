@@ -1,3 +1,5 @@
+create database dbdoc default character set utf8 collate utf8_general_ci;
+
 CREATE TABLE t_sys_user (
     Id varchar(36) NOT NULL default '',
     isValid varchar(1) default 'Y',
@@ -82,7 +84,7 @@ CREATE TABLE t_doc_file (
 
 insert into t_sys_user(Id, username, password, email, address) values('000000000000000000000000000000000000', 'admin', 'c4ca4238a0b923820dcc509a6f75849b', 'admin@admin.com', 'admin address');
 
-insert into t_sys_config(Id, version, systemName) values('000000000000000000000000000000000000', 'ppm-doc v1.0', 'PPM Document Manage');
+insert into t_sys_config(Id, version, systemName) values('000000000000000000000000000000000000', 'ppm-doc v1.0', 'PPM文档管理');
 
 insert into t_user_pos(Id, name, intro) values('000000000000000000000000000000000000', '部门经理', '部门经理');
 insert into t_user_pos(Id, name, intro) values('000000000000000000000000000000000001', '部门成员', '部门成员');
