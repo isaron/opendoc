@@ -1,6 +1,8 @@
 #PPM开源项目
 
-PPM开源项目从MyEclipse迁移至Intellij Idea。
+PPM项目主页：http://www.ppm123.cn
+
+PPM开发环境从MyEclipse迁移至Intellij Idea。
 
 此项目包含了PPM技术平台和所有的PPM开源项目：
 
