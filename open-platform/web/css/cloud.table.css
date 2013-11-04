@@ -1,0 +1,115 @@
+/* list table style */
+.list-table {
+	font-size: 13px;
+	width: 100%;
+	table-layout: auto;
+}
+
+.fix-table {
+	table-layout: fixed;
+}
+
+.list-table .sn, .list-table th {
+	text-align: center;
+}
+
+.list-table .input-filter {
+	width: 95%;
+}
+
+.list-table .input-icon {
+	margin-left: -19px;
+	margin-top: 5px;
+	cursor: pointer;
+}
+
+.list-table tr {
+	height: 40px;
+	border-bottom: 1px solid #ddd;
+}
+
+.list-table tr:hover > td {
+	background-color: #d9edf7!important;
+}
+
+.list-table tbody > tr:nth-child(odd) > td {
+	background-color: #f9f9f9;
+}
+
+.tree-icon {
+	margin: 2px 4px 0 0;
+	cursor: pointer;
+}
+
+/* detail table style */
+.detail-table {
+	margin: 5px;
+	font-family: "微软雅黑", Arial; 
+	font-size: 13px;
+	border-collapse: inherit!important;
+	border-spacing: 2px!important;
+}
+
+.detail-table tr {
+	height: 28px;
+}
+
+.detail-table td{
+	padding: 5px 5px 5px 15px;
+}
+
+.detail-table .label-td {
+	width: 100px;
+	padding-left: 5px!important;
+	background-color: #eee!important;
+}
+
+.detail-table .half-td {
+	width: 255px;
+}
+
+.detail-table .whole-td {
+	width: 645px;
+}
+
+.detail-table tr:nth-child(even) td {
+	background-color: #ecf6f2; 
+}
+
+/* edit table style */
+.edit-table {
+	font-size: 13px;
+	font-family: "微软雅黑", Arial;
+}
+
+.edit-table .label-td {
+	width: 100px;
+	padding-bottom: 8px;
+	padding-left: 5px!important;
+}
+
+.input-text {
+	height: 28px!important;
+}
+
+.input-textarea {
+	height: 150px!important;
+}
+
+.edit-table .input-text, .edit-table .input-textarea {
+	width: 460px;
+}
+
+.edit-table .input-icon {
+	margin-left: 5px;
+	cursor: pointer;
+	vertical-align: text-top;
+}
+
+.input-require {
+	background-color: #d9edf7!important;
+}
+
+/* dialog detail table */
+
+/* dialog edit table */
