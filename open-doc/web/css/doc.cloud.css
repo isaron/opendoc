@@ -1,0 +1,44 @@
+.button {
+	margin: 0;
+}
+
+.attach_box {
+	height: 125px;
+	padding: 7px;
+}
+
+.attach_name {
+	border: 0!important;
+	text-align: center;
+	padding-top: 3px;
+	cursor: text;
+}
+
+.doc-selected {
+	background-color: rgb(201, 224, 252);
+	border: 1px solid rgb(125, 162, 206);
+}
+
+.input-rename {
+	width: 140px;
+}
+
+/* document online view style */
+.doc-view {
+	width: 770px;
+	margin: 10px;
+	max-height: 500px;
+	overflow-y: auto;
+}
+
+.doc-view-border {
+	border: 1px solid #bbb;
+	padding: 8px;
+	border-radius: 3px;
+	width: 753px;
+}
+
+.doc-view img {
+	max-width: 770px;
+	max-height: 500px;
+}
