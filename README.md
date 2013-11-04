@@ -2,10 +2,42 @@
 
 PPM项目主页：http://www.ppm123.cn
 
+PPM管理系统完全免费、开源，致力于研发国内最精致，最实用的个人、企业信息化管理系统，提高个人与企业的效率！
+
+#源码使用
+
 PPM开发环境从MyEclipse迁移至Intellij Idea。
+
+1. 打开Intellij IDEA -- VCS菜单 -- Checkout Form Version Control -- Git  -- 复制Git地址
+
+2. open-platform为平台模块，不独立运行，而是通过build-***.xml Ant至目标项目
 
 此项目包含了PPM技术平台和所有的PPM开源项目：
 
-1. open-platform 平台系统
+＃open-platform 平台系统
 
-2. open-doc 文档管理系统
+1. Security权限模型
+
+2. Entity实体自动化
+
+3. Attach附件处理
+
+4. Platform工具集
+
+5. UI前端插件
+
+6. Tags自定义标签
+
+＃open-doc 文档管理系统
+
+PPM Doc 文档管理系统是国内第一款开源的企业文档管理系统，旨在帮助企业摆脱VSS等粗糙的文档管理软件，方便、快捷管理并协同企业文档！
+
+1. 文档仓库 -- 简单清爽的界面风格，Windows文件目录式操作习惯
+
+2. 版本控制 -- 文档检入检出，控制文档版本，部门内文档协同
+
+3. 版本比较 -- 对比文档的不同版本，直观查看不同版本间差异
+
+4. 在线浏览 -- 在线浏览文本、图片、Office文件、PDF等文档
+
+5. 全文检索 -- 全文检索文本型文件及Office文件内部内容
