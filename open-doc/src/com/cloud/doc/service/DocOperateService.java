@@ -69,18 +69,20 @@ public class DocOperateService {
 	 * @param docFileId
 	 * @return
 	 */
-	public boolean checkout(String docFileId) {
+	public synchronized boolean checkout(String docFileId) {
 		
 		if(StringUtil.isNullOrEmpty(docFileId)) {
 			return false;
 		}
-		
-		// ensure async situation
+
+        DocFile file = (DocFile) dao.getObject(DocFile.class, docFileId);
 		
 		// check file if has been checkout-ed
+        if(DocUtil.DOC_STATUS_CHECKOUT == file.getStatus()) {
+            return false;
+        }
 		
 		// set check out status
-		DocFile file = (DocFile) dao.getObject(DocFile.class, docFileId);
 		file.setStatus(DocUtil.DOC_STATUS_CHECKOUT);
         file.setCheckoutor(Constants.getLoginUserId());
 		
