@@ -2,6 +2,7 @@ package com.cloud.doc.service;
 
 import java.util.List;
 
+import com.cloud.platform.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -39,6 +40,7 @@ public class DocDetailService {
 		DocFile docFile = (DocFile) info[0];
 		
 		docFile.setAttach((Attach) info[1]);
+        docFile.setCanCheckin(Constants.getLoginUserId().equals(docFile.getCheckoutor()));
 		
 		return docFile;
 	}

@@ -21,9 +21,23 @@
 		<div id="btnDiv">
 			<a href="<c:url value="/docstore/openDocstore.do?parentId=${param.parentId}" />" class="button button-rounded button-flat-primary">返回</a>
 			<span class="button-split"></span>
-			
-			<button onclick="checkout($('#entityId').val());" class="button button-rounded button-flat-primary">检出</button>
-			<button onclick="checkin();" class="button button-rounded button-flat-primary">检入</button>
+
+            <c:if test="${doc.status == 0}">
+                <button onclick="checkout($('#entityId').val());" class="button button-rounded button-flat-primary">检出</button>
+            </c:if>
+
+            <c:if test="${doc.status != 0}">
+                <button onclick="checkout($('#entityId').val());" class="button button-rounded button-flat-primary" disabled="disabled">检出</button>
+            </c:if>
+
+            <c:if test="${doc.status == 1 && doc.canCheckin}">
+                <button onclick="checkin();" class="button button-rounded button-flat-primary">检入</button>
+            </c:if>
+
+            <c:if test="${doc.status != 1 || !doc.canCheckin}">
+                <button onclick="checkin();" class="button button-rounded button-flat-primary" disabled="disabled">检入</button>
+            </c:if>
+
 			<span class="button-split"></span>
 			
 			<a id="downloadBtn" href="<c:url value="/download.action?fileName=${doc.attach.id}.${doc.attach.extendType}&realName=${doc.name}" />" class="button button-rounded button-flat-primary">下载文档</a>

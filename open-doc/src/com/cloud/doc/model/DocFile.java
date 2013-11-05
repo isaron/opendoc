@@ -18,13 +18,15 @@ public class DocFile extends Tree {
 	private String uniqueId;
 	private String isLatest;
 	private String docVersion;
-	
-	private String creator;
+    private String checkoutor;
+
+    private String creator;
 	private Date createTime;
 	
 	private Attach attach;
-	
-	@Column(length = 1)
+    private boolean canCheckin;
+
+    @Column(length = 1)
 	public int getStatus() {
 		return status;
 	}
@@ -59,6 +61,15 @@ public class DocFile extends Tree {
 	public void setDocVersion(String docVersion) {
 		this.docVersion = docVersion;
 	}
+
+    @Column(length = 36)
+    public String getCheckoutor() {
+        return checkoutor;
+    }
+
+    public void setCheckoutor(String checkoutor) {
+        this.checkoutor = checkoutor;
+    }
 	
 	@Column(length = 36)
 	public String getCreator() {
@@ -86,4 +97,13 @@ public class DocFile extends Tree {
 	public void setAttach(Attach attach) {
 		this.attach = attach;
 	}
+
+    @Transient
+    public boolean isCanCheckin() {
+        return canCheckin;
+    }
+
+    public void setCanCheckin(boolean canCheckin) {
+        this.canCheckin = canCheckin;
+    }
 }

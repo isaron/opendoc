@@ -82,6 +82,7 @@ public class DocOperateService {
 		// set check out status
 		DocFile file = (DocFile) dao.getObject(DocFile.class, docFileId);
 		file.setStatus(DocUtil.DOC_STATUS_CHECKOUT);
+        file.setCheckoutor(Constants.getLoginUserId());
 		
 		dao.saveObject(file);
 		return true;
