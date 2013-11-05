@@ -52,7 +52,7 @@
 							<img src="<c:url value="/upload/${file.attach.id}.${file.attach.extendType}" />" />
 						</c:if>
 						<c:if test="${!(fn:toUpperCase(file.attach.extendType) == 'JPG' || fn:toUpperCase(file.attach.extendType) == 'JPEG' || fn:toUpperCase(file.attach.extendType) == 'GIF' || fn:toUpperCase(file.attach.extendType) == 'PNG' || fn:toUpperCase(file.attach.extendType) == 'BMP')}">
-							<div class="<cloud:fileImg extend="${file.attach.extendType}" />"></div>
+							<div class="<cloud:fileImg extend="${file.attach.extendType} <c:if test='${file.status == 1}'>checkout</if>" />"></div>
 						</c:if>
 					</div>
 					<div class="attach_name" ondblclick="rename();" onmouseover="this.title=this.innerText">${file.name}</div>
