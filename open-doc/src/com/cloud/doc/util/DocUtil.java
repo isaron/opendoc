@@ -22,7 +22,7 @@ public class DocUtil {
 		}
 		
 		String[] vs = version.split("\\.");
-		int count = Integer.parseInt(vs[1]);
+		int count = Integer.parseInt(vs[1]) + 1;
 		
 		return vs[0] + "." + count;
 	}
