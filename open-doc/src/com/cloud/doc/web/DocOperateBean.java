@@ -22,15 +22,22 @@ public class DocOperateBean {
 	/**
 	 * check in file
 	 * 
-	 * @param parentId
-	 * @param attachIds
+	 * @param docFileId
+	 * @param attachId
 	 */
 	@ResponseBody
 	@RequestMapping("/checkin.do")
 	public String checkin(@RequestParam("docFileId") String docFileId,
 			@RequestParam("attachId") String attachId) {
-		
-		return docOperateService.checkin(docFileId, attachId);
+        String newFileId = "";
+
+        try {
+            docOperateService.checkin(docFileId, attachId);
+        } catch (Exception e) {
+            logger.error("***** 异常信息 ***** 方法：checkin", e);
+        }
+
+		return newFileId;
 	}
 	
 	/**

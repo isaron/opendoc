@@ -2,15 +2,14 @@ package com.cloud.doc.service;
 
 import java.util.Date;
 
+import com.cloud.platform.*;
+import org.quartz.SchedulerException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cloud.attach.Attach;
 import com.cloud.doc.model.DocFile;
 import com.cloud.doc.util.DocUtil;
-import com.cloud.platform.Constants;
-import com.cloud.platform.IDao;
-import com.cloud.platform.StringUtil;
 
 @Service
 public class DocOperateService {
@@ -24,7 +23,7 @@ public class DocOperateService {
 	 * @param docFileId
 	 * @param attachId
 	 */
-	public String checkin(String docFileId, String attachId) {
+	public String checkin(String docFileId, String attachId) throws SchedulerException {
 		
 		if(StringUtil.isNullOrEmpty(docFileId, attachId)) {
 			return "";
@@ -53,6 +52,13 @@ public class DocOperateService {
 		newAttach.setEntityId(newFile.getId());
 		
 		dao.saveObject(newAttach);
+
+        // convert doc file for online view
+        if (DocConstants.isOffice(newAttach.getExtendType())
+                || "pdf".equals(newAttach.getExtendType().toLowerCase())) {
+            DocStoreService docService = (DocStoreService) SpringUtil.getBean("docStoreService");
+            docService.convertOnlineDoc(newAttach);
+        }
 		
 		// update origin doc file status
 		originFile.setStatus(DocUtil.DOC_STATUS_NORMAL);

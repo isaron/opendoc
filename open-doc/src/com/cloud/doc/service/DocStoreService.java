@@ -97,7 +97,7 @@ public class DocStoreService {
 	 * 
 	 * @param attach
 	 */
-	private void convertOnlineDoc(Attach attach) throws SchedulerException {
+	public void convertOnlineDoc(Attach attach) throws SchedulerException {
 		
 		// init mail send job
 		JobDetail jobDetail = new JobDetail(Constants.getID(), DocConvertJob.class);
