@@ -32,7 +32,7 @@ public class DocOperateBean {
         String newFileId = "";
 
         try {
-            docOperateService.checkin(docFileId, attachId);
+            newFileId = docOperateService.checkin(docFileId, attachId);
         } catch (Exception e) {
             logger.error("***** 异常信息 ***** 方法：checkin", e);
         }

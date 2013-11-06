@@ -43,6 +43,8 @@
 	max-height: 500px;
 }
 
-.checkout {
-
+.checkout-img {
+    width: 20px!important;
+    height: 20px!important;
+    margin: 77px 0 0 125px;
 }
