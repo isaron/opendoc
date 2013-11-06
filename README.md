@@ -8,13 +8,17 @@ PPM管理系统完全免费、开源，致力于研发国内最精致，最实�
 
 PPM开发环境从MyEclipse迁移至Intellij Idea。
 
-1. 打开Intellij IDEA -- VCS菜单 -- Checkout Form Version Control -- Git  -- 复制Git地址
+1. 打开Intellij IDEA -- VCS菜单 -- Checkout Form Version Control -- Git  -- 复制Git地址 -- 检出项目。
 
-2. open-platform为平台模块，不独立运行，而是通过build-***.xml Ant至目标项目
+2. 执行/web/WEB-INF/sql/目录下的SQL脚本，配置jdbc.properties。
+
+3. 配置open-platform build.xml。执行Ant命令。open-platform为平台模块，不独立运行，而是通过build-***.xml Ant至目标项目。
+
+4. 配置Intellij IDEA tomcat，部署运行。
 
 此项目包含了PPM技术平台和所有的PPM开源项目：
 
-＃open-platform 平台系统
+#open-platform 平台系统
 
 1. Security权限模型
 
@@ -28,7 +32,7 @@ PPM开发环境从MyEclipse迁移至Intellij Idea。
 
 6. Tags自定义标签
 
-＃open-doc 文档管理系统
+#open-doc 文档管理系统
 
 PPM Doc 文档管理系统是国内第一款开源的企业文档管理系统，旨在帮助企业摆脱VSS等粗糙的文档管理软件，方便、快捷管理并协同企业文档！
 
