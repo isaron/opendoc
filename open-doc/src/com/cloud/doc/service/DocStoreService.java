@@ -82,11 +82,7 @@ public class DocStoreService {
 			attach.setEntityId(file.getId());
 			
 			// convert doc file for online view
-			if (DocConstants.isOffice(attach.getExtendType())
-					|| "pdf".equals(attach.getExtendType().toLowerCase())) {
-				
-				convertOnlineDoc(attach);
-			}
+			convertOnlineDoc(attach);
 			
 			dao.saveObject(attach);
 		}
@@ -98,6 +94,11 @@ public class DocStoreService {
 	 * @param attach
 	 */
 	public void convertOnlineDoc(Attach attach) throws SchedulerException {
+
+        if (!DocConstants.isOffice(attach.getExtendType())
+                && !"pdf".equals(attach.getExtendType().toLowerCase())) {
+            return;
+        }
 		
 		// init mail send job
 		JobDetail jobDetail = new JobDetail(Constants.getID(), DocConvertJob.class);

@@ -54,11 +54,8 @@ public class DocOperateService {
 		dao.saveObject(newAttach);
 
         // convert doc file for online view
-        if (DocConstants.isOffice(newAttach.getExtendType())
-                || "pdf".equals(newAttach.getExtendType().toLowerCase())) {
-            DocStoreService docService = (DocStoreService) SpringUtil.getBean("docStoreService");
-            docService.convertOnlineDoc(newAttach);
-        }
+        DocStoreService docService = (DocStoreService) SpringUtil.getBean("docStoreService");
+        docService.convertOnlineDoc(newAttach);
 		
 		// update origin doc file status
 		originFile.setStatus(DocUtil.DOC_STATUS_NORMAL);
