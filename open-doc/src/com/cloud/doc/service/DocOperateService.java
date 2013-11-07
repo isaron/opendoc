@@ -24,7 +24,7 @@ public class DocOperateService {
 	 * @param docFileId
 	 * @param attachId
 	 */
-	public String checkin(String docFileId, String attachId) throws SchedulerException {
+	public String checkin(String docFileId, String attachId, String note) throws SchedulerException {
 		
 		if(StringUtil.isNullOrEmpty(docFileId, attachId)) {
 			return "";
@@ -63,6 +63,9 @@ public class DocOperateService {
 		originFile.setIsLatest(Constants.VALID_NO);
 		
 		dao.saveObject(originFile);
+
+        // save checkin record
+        saveCheckRecord(docFileId, note, "检入");
 		
 		return newFile.getId();
 	}

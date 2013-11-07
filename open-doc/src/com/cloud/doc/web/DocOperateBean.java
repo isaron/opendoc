@@ -28,11 +28,11 @@ public class DocOperateBean {
 	@ResponseBody
 	@RequestMapping("/checkin.do")
 	public String checkin(@RequestParam("docFileId") String docFileId,
-			@RequestParam("attachId") String attachId) {
+			@RequestParam("attachId") String attachId, @RequestParam("note") String note) {
         String newFileId = "";
 
         try {
-            newFileId = docOperateService.checkin(docFileId, attachId);
+            newFileId = docOperateService.checkin(docFileId, attachId, note);
         } catch (Exception e) {
             logger.error("***** 异常信息 ***** 方法：checkin", e);
         }

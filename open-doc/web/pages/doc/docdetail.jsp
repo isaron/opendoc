@@ -82,9 +82,15 @@
 	</div>
 	
 	<div id="checkinDialog" class="hide"><p style="padding: 5px;">
-		<div style="margin-left: 15px;"><input id="file_upload" type="file" /></div>
+        <table class="edit-table" style="margin-top: 20px;margin-bottom: 10px;">
+            <tr>
+                <td class="label-td">备注</td>
+                <td><textarea id='checkinNote' style='width: 550px;height: 100px;'></textarea></td></td>
+            </tr>
+        </table>
+        <div style="margin-left: 15px;"><input id="file_upload" type="file" /></div>
 	</p></div>
-	
+
 	<script>
 		var extendFlag = $("#extendFlag").val().trim(), html = "";
 		
@@ -137,7 +143,7 @@
 					attachId = data;
 				},
 				onQueueComplete: function() {
-					_remoteCall("docop/checkin.do", {docFileId: $("#entityId").val(), attachId: attachId}, function(data) {
+					_remoteCall("docop/checkin.do", {docFileId: $("#entityId").val(), attachId: attachId, note: $("#checkinNote").val()}, function(data) {
 						if(data)  reloadPage("docdetail/openDoc.do?docId=" + data + "&parentId=" + $("#parentId").val());
 					});
 				}
