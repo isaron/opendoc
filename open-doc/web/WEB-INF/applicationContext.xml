@@ -54,6 +54,7 @@
 				<value>com.cloud.doc.model.Directory</value>
 				<value>com.cloud.doc.model.DocFile</value>
 				<value>com.cloud.note.model.Note</value>
+                <value>com.cloud.doc.model.DocRecord</value>
 			</list>
 		</property>
 	</bean> 
