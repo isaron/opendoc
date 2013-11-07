@@ -2,6 +2,7 @@ package com.cloud.doc.service;
 
 import java.util.Date;
 
+import com.cloud.doc.model.DocRecord;
 import com.cloud.platform.*;
 import org.quartz.SchedulerException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,7 +73,7 @@ public class DocOperateService {
 	 * @param docFileId
 	 * @return
 	 */
-	public synchronized boolean checkout(String docFileId) {
+	public synchronized boolean checkout(String docFileId, String note) {
 		
 		if(StringUtil.isNullOrEmpty(docFileId)) {
 			return false;
@@ -90,6 +91,33 @@ public class DocOperateService {
         file.setCheckoutor(Constants.getLoginUserId());
 		
 		dao.saveObject(file);
+
+        // save record
+        saveCheckRecord(docFileId, note, "检出");
+
 		return true;
 	}
+
+    /**
+     * save checkout or checkin record
+     *
+     * @param docId
+     * @param note
+     * @param operate
+     */
+    public void saveCheckRecord(String docId, String note, String operate) {
+
+        if(StringUtil.isNullOrEmpty(docId)) {
+            return;
+        }
+
+        DocRecord record = new DocRecord();
+        record.setDocId(docId);
+        record.setNote(note);
+        record.setOperate(operate);
+        record.setCreator(Constants.getLoginUserId());
+        record.setCreateTime(new Date());
+
+        dao.saveObject(record);
+    }
 }

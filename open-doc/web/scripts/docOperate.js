@@ -5,7 +5,7 @@ function checkout(docFileId) {
     var buttons = [{text: "检出", click: function() {
         openLoader();
 
-        _remoteCall("docop/checkout.do", {docFileId : docFileId}, function(data) {
+        _remoteCall("docop/checkout.do", {docFileId : docFileId, note: $("#checkoutNote").val()}, function(data) {
             if(data == "Y") {
                 location.href = $("#downloadBtn").attr("href");
                 setTimeout(function() { reloadPage(); }, 500);
@@ -16,7 +16,12 @@ function checkout(docFileId) {
         });
     }}];
 
-    ppmDialog(null, "检出", "sss", buttons);
+    var html = "<table class='edit-table' style='margin-top: 20px;'><tr>";
+    html += "<td class='label-td'>备注</td>";
+    html += "<td><textarea id='checkoutNote' style='width: 550px;height: 100px;'></textarea></td>";
+    html += "</tr></table>";
+
+    ppmDialog2(null, "检出", html, buttons, null, 320);
 }
 
 /**

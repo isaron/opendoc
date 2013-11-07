@@ -48,9 +48,9 @@ public class DocOperateBean {
 	 */
 	@ResponseBody
 	@RequestMapping("/checkout.do")
-	public String checkout(@RequestParam("docFileId") String docFileId) {
+	public String checkout(@RequestParam("docFileId") String docFileId, @RequestParam("note") String note) {
 		
-		boolean isSuccess = docOperateService.checkout(docFileId);
+		boolean isSuccess = docOperateService.checkout(docFileId, note);
 		
 		return isSuccess ? Constants.VALID_YES : Constants.VALID_NO;
 	}

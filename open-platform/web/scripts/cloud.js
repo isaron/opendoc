@@ -118,6 +118,32 @@ function ppmDialog(selector, title, buttons) {
 	});
 }
 
+function ppmDialog2(selector, title, html, buttons, w, h) {
+    if(!selector) {
+        selector = "#tempDialog";
+
+        if($(selector).size() == 0) {
+            $("<div id='tempDialog'></div>").appendTo(document.body);
+        }
+    }
+
+    if(html)  $(selector).html(html);
+
+    if(!buttons)  buttons = [];
+    buttons.push({text: "取消", click: function() { $(selector).dialog("close"); }});
+
+    $(selector).dialog({
+        autoOpen: true,
+        resizable: false,
+        title: title,
+        width: w ? w : 700,
+        height: h ? h : 480,
+        modal: true,
+        position: ["center", 100],
+        buttons: buttons
+    });
+}
+
 /**
  * stop event bubble
  * ps: you can also use 'return false' instead

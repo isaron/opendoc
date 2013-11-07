@@ -14,7 +14,7 @@ public class DocRecord {
     private String note;
     private String operate;
     private String creator;
-    private Date createTIme;
+    private Date createTime;
 
     @Id
     @Column(unique = true, nullable = false)
@@ -65,11 +65,11 @@ public class DocRecord {
     }
 
     @Column
-    public Date getCreateTIme() {
-        return createTIme;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setCreateTIme(Date createTIme) {
-        this.createTIme = createTIme;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 }

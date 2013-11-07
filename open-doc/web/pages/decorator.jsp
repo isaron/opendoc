@@ -18,9 +18,9 @@
 	<link rel="stylesheet" type="text/css" href="<c:url value="/css/cloud.ui.select.css" />">
 	
 	<script type="text/javascript" src="<c:url value="/scripts/jquery-1.9.0.min.js" />"></script>
-    <script type="text/javascript" src="<c:url value="/scripts/jquery-ui-1.10.0.custom.min.js" />"></script>
 	<script type="text/javascript" src="<c:url value="/scripts/bootstrap.min.js" />"></script>
 	<script type="text/javascript" src="<c:url value="/scripts/underscore.js" />"></script>
+	<script type="text/javascript" src="<c:url value="/scripts/jquery-ui-1.10.0.custom.min.js" />"></script>
 	<script type="text/javascript" src="<c:url value="/scripts/jquery.icheck.js" />"></script>
 	<script type="text/javascript" src="<c:url value="/scripts/cloud.js" />"></script>
 	<script type="text/javascript" src="<c:url value="/scripts/cloud.core.js" />"></script>
