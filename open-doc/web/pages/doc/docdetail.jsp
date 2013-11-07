@@ -73,6 +73,8 @@
 				<td class="half-td"><cloud:time date="${doc.createTime}" /></td>
 			</tr>
 		</table>
+
+        <cloud:record records="${records}" />
 		
 		<cloud:note />
 		

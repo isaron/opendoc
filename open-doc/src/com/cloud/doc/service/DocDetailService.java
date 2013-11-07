@@ -1,7 +1,9 @@
 package com.cloud.doc.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import com.cloud.doc.model.DocRecord;
 import com.cloud.platform.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,6 +18,26 @@ public class DocDetailService {
 
 	@Autowired
 	private IDao dao;
+
+    /**
+     * search doc records
+     *
+     * @param docId
+     * @return
+     */
+    public List<DocRecord> searchRecords(String docId) {
+
+        if(StringUtil.isNullOrEmpty(docId)) {
+            return new ArrayList();
+        }
+
+        StringBuffer hql = new StringBuffer();
+        hql.append("from DocRecord r where r.docId in ");
+        hql.append("(select f.id from DocFile f where f.uniqueId = (select f2.uniqueId from DocFile f2 where f2.id = ?))");
+        hql.append(" order by r.createTime desc");
+
+        return dao.getAllByHql(hql.toString(), docId);
+    }
 	
 	/**
 	 * get doc file

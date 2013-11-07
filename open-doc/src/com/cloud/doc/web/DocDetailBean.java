@@ -1,7 +1,9 @@
 package com.cloud.doc.web;
 
 import java.io.File;
+import java.util.List;
 
+import com.cloud.doc.model.DocRecord;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -54,7 +56,10 @@ public class DocDetailBean {
 		try {
 			DocFile doc = docDetailService.getDocFile(docId);
 			mv.addObject("doc", doc);
-			
+
+            List<DocRecord> records = docDetailService.searchRecords(docId);
+            mv.addObject("records", records);
+
 			// get text file content
 			if(DocConstants.isText(doc.getAttach().getExtendType())) {
 				String path = DocConstants.UPLOAD_PATH + doc.getAttach().getId() + "." + doc.getAttach().getExtendType();
