@@ -17,6 +17,10 @@ body {
 	color: red;
 }
 
+.underline {
+    text-decoration: underline;
+}
+
 .invisiable {
 	visibility: hidden;
 }

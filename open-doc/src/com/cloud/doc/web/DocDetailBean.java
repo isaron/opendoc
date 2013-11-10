@@ -60,6 +60,9 @@ public class DocDetailBean {
             List<DocRecord> records = docDetailService.searchRecords(docId);
             mv.addObject("records", records);
 
+            List<DocFile> versionDocs = docDetailService.searchVersionDocs(docId);
+            mv.addObject("versionDocs", versionDocs);
+
 			// get text file content
 			if(DocConstants.isText(doc.getAttach().getExtendType())) {
 				String path = DocConstants.UPLOAD_PATH + doc.getAttach().getId() + "." + doc.getAttach().getExtendType();

@@ -22,19 +22,19 @@
 			<a href="<c:url value="/docstore/openDocstore.do?parentId=${param.parentId}" />" class="button button-rounded button-flat-primary">返回</a>
 			<span class="button-split"></span>
 
-            <c:if test="${doc.status == 0}">
+            <c:if test="${doc.status == 0 && doc.isLatest == 'Y'}">
                 <button onclick="checkout($('#entityId').val());" class="button button-rounded button-flat-primary">检出</button>
             </c:if>
 
-            <c:if test="${doc.status != 0}">
+            <c:if test="${doc.status != 0 || doc.isLatest != 'Y'}">
                 <button onclick="checkout($('#entityId').val());" class="button button-rounded button-flat-primary" disabled="disabled">检出</button>
             </c:if>
 
-            <c:if test="${doc.status == 1 && doc.canCheckin}">
+            <c:if test="${doc.status == 1 && doc.canCheckin && doc.isLatest == 'Y'}">
                 <button onclick="checkin();" class="button button-rounded button-flat-primary">检入</button>
             </c:if>
 
-            <c:if test="${doc.status != 1 || !doc.canCheckin}">
+            <c:if test="${doc.status != 1 || !doc.canCheckin || doc.isLatest != 'Y'}">
                 <button onclick="checkin();" class="button button-rounded button-flat-primary" disabled="disabled">检入</button>
             </c:if>
 
@@ -43,41 +43,61 @@
 			<a id="downloadBtn" href="<c:url value="/download.action?fileName=${doc.attach.id}.${doc.attach.extendType}&realName=${doc.name}" />" class="button button-rounded button-flat-primary">下载文档</a>
 		</div>
 		
-		<div class="name">${doc.name}</div>
-		
-        <div id="viewArea" class="doc-view">
-        	<c:if test="${textContent != null}">
-        		${textContent}
-        	</c:if>
-        </div>
-		
-		<div class="title">基本信息</div>
-		
-		<table class="detail-table">
-			<tr>
-				<td class="label-td">状态</td>
-				<td class="half-td"><cloud:fileStatus status="${doc.status}" /></td>
-				<td class="label-td">版本</td>
-				<td class="half-td">${doc.docVersion}</td>
-			</tr>
-			<tr>
-				<td class="label-td">文件类型</td>
-				<td class="half-td">${doc.attach.extendType}</td>
-				<td class="label-td">文件大小</td>
-				<td class="half-td"><cloud:fileSize size="${doc.attach.fileSize}" /></td>
-			</tr>
-			<tr>
-				<td class="label-td">创建人</td>
-				<td class="half-td"><cloud:user userId="${doc.creator}" /></td>
-				<td class="label-td">创建时间</td>
-				<td class="half-td"><cloud:time date="${doc.createTime}" /></td>
-			</tr>
-		</table>
+        <div class="row-fluid">
+            <div class="span9">
+                <div class="name">${doc.name} [${doc.docVersion}]</div>
 
-        <cloud:record records="${records}" />
-		
-		<cloud:note />
-		
+                <div id="viewArea" class="doc-view">
+                    <c:if test="${textContent != null}">
+                        ${textContent}
+                    </c:if>
+                </div>
+
+                <div class="title">基本信息</div>
+
+                <table class="detail-table">
+                    <tr>
+                        <td class="label-td">状态</td>
+                        <td class="half-td"><cloud:fileStatus status="${doc.status}" /></td>
+                        <td class="label-td">版本</td>
+                        <td class="half-td">${doc.docVersion}</td>
+                    </tr>
+                    <tr>
+                        <td class="label-td">文件类型</td>
+                        <td class="half-td">${doc.attach.extendType}</td>
+                        <td class="label-td">文件大小</td>
+                        <td class="half-td"><cloud:fileSize size="${doc.attach.fileSize}" /></td>
+                    </tr>
+                    <tr>
+                        <td class="label-td">创建人</td>
+                        <td class="half-td"><cloud:user userId="${doc.creator}" /></td>
+                        <td class="label-td">创建时间</td>
+                        <td class="half-td"><cloud:time date="${doc.createTime}" /></td>
+                    </tr>
+                </table>
+
+                <cloud:record records="${records}" />
+
+                <cloud:note />
+            </div>
+
+            <div class="span3 version-bar">
+                <div class="name">文档版本</div>
+                <ul>
+                    <c:forEach var="file" items="${versionDocs}">
+                        <li>
+                            <c:if test="${doc.docVersion == file.docVersion}">
+                                <span>${file.name} [${file.docVersion}]</span>
+                            </c:if>
+                            <c:if test="${doc.docVersion != file.docVersion}">
+                                <a href="<c:url value="/docdetail/openDoc.do?docId=${file.id}&parentId=${param.parentId}" />">${file.name} [${file.docVersion}]</a>
+                            </c:if>
+                        </li>
+                    </c:forEach>
+                </ul>
+            </div>
+        </div>
+
 		<input id="entityId" type="hidden" value="${param.docId}" />
 		<input id="parentId" type="hidden" value="${param.parentId}" />
 		<input id="extendFlag" type="hidden" value="<cloud:fileImg extend="${doc.attach.extendType}" />" />

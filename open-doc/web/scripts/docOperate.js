@@ -1,4 +1,14 @@
 /**
+ * open doc detail page
+ *
+ * @param docId
+ * @param parentId
+ */
+function openDoc(docId, parentId) {
+    reloadPage("docdetail/openDoc.do?docId=" + docId + "&parentId=" + parentId);
+}
+
+/**
  * check out file
  */
 function checkout(docFileId) {

@@ -25,7 +25,7 @@
 	<div id="header">
 		<span id="logoTxt" class="logo"></span>
 		<span class="operate">
-			<a href="http://www.ppm123.cn/bbs/forum.php" target="_blank" class="head-link">问题反馈</a>
+			<a href="http://ghostgood.204.why.sh.cn/bbs/forum.php" target="_blank" class="head-link">问题反馈</a>
 			
 			当前登录：
 			<div class="dropdown">

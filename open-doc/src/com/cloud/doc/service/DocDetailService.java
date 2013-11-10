@@ -20,6 +20,26 @@ public class DocDetailService {
 	private IDao dao;
 
     /**
+     * search doc's all version docs
+     *
+     * @param docId
+     * @return
+     */
+    public List<DocFile> searchVersionDocs(String docId) {
+
+        if(StringUtil.isNullOrEmpty(docId)) {
+            return new ArrayList();
+        }
+
+        StringBuffer hql = new StringBuffer();
+        hql.append("select f from DocFile f where f.uniqueId = ");
+        hql.append("(select f2.uniqueId from DocFile f2 where f2.id = ?)");
+        hql.append(" order by f.docVersion desc");
+
+        return dao.getAllByHql(hql.toString(), docId);
+    }
+
+    /**
      * search doc records
      *
      * @param docId

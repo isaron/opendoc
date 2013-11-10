@@ -6,8 +6,10 @@
 <html>
 <head>
 	<title>PPM文档管理系統</title>
-	
-	<link rel="stylesheet" type="text/css" href="<c:url value="/css/bootstrap.css" />">
+
+
+	<link rel="stylesheet" type="text/css" href="<c:url value="/css/bootstrap.min.css" />">
+    <link rel="stylesheet" type="text/css" href="<c:url value="/css/bootstrap-responsive.min.css" />">
 	<link rel="stylesheet" type="text/css" href="<c:url value="/css/jquery-ui-1.10.0.custom.css" />">
 	<link rel="stylesheet" type="text/css" href="<c:url value="/css/icheck/blue.css" />">
 	<link rel="stylesheet" type="text/css" href="<c:url value="/css/buttons/css/font-awesome.min.css" />">

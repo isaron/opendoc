@@ -48,3 +48,21 @@
     height: 20px!important;
     margin: 77px 0 0 125px;
 }
+
+/* version bar style */
+.version-bar {
+    padding-left: 20px;
+}
+
+.version-bar .name {
+    padding: 8px;
+}
+
+.version-bar ul {
+    margin-left: 13px;
+    list-style: none;
+}
+
+.version-bar ul li {
+    line-height: 30px;
+}
