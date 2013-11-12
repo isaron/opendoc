@@ -39,7 +39,7 @@
 				</tr>
 				<tr>
 					<td align="center">
-						<input class="button button-pill button-flat-primary" type="submit" style="width: 150px;border: 0;" />
+						<input class="button button-pill button-flat-primary" type="submit" value="登录" style="width: 150px;border: 0;" />
 					</td>
 				</tr>
 			</table>

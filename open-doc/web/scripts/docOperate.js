@@ -17,8 +17,8 @@ function checkout(docFileId) {
 
         _remoteCall("docop/checkout.do", {docFileId : docFileId, note: $("#checkoutNote").val()}, function(data) {
             if(data == "Y") {
-                location.href = $("#downloadBtn").attr("href");
-                setTimeout(function() { reloadPage(); }, 500);
+                parent.location.href = $("#downloadBtn").attr("href");
+                reloadPage();
             } else {
                 closeLoader();
                 ppmAlert("提示", "该文档已被检出！", function() { reloadPage(); });
