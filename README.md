@@ -46,7 +46,7 @@ PPM Doc 文档管理系统是国内第一款开源的企业文档管理系统，
 
 5. 全文检索 -- 全文检索文本型文件及Office文件内部内容
 
-#android-contact 企业通讯录Android App
+#android-contact 企业通讯录
 
 PPM Contact 企讯通旨在构建现代化的企业社交，通讯体系，提高企业内部沟通效率，互联企业人员及企业移动社交！
 
