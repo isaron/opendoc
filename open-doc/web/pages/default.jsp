@@ -41,7 +41,7 @@
 	
 	<div id="mainContent">
 		<ul id="navtab">
-			<li url="<c:url value="/pages/work/work.jsp" />">我的文档</li>
+			<li url="<c:url value="/work/openWork.do" />">我的文档</li>
 			<li url="<c:url value="/docstore/openDocstore.do" />">文档仓库</li>
 			<li url="<c:url value="/pages/account/account.jsp" />">组织架构</li>
 			<li url="<c:url value="/pages/system/system.jsp" />">系统管理</li>

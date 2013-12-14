@@ -1,9 +1,11 @@
 package com.cloud.doc.service;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
+import com.cloud.attach.Attach;
+import com.cloud.doc.model.Directory;
+import com.cloud.doc.model.DocFile;
+import com.cloud.doc.util.DocUtil;
+import com.cloud.platform.*;
+import com.cloud.security.model.Department;
 import org.quartz.JobDetail;
 import org.quartz.Scheduler;
 import org.quartz.SchedulerException;
@@ -11,17 +13,9 @@ import org.quartz.SimpleTrigger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.cloud.attach.Attach;
-import com.cloud.doc.model.Directory;
-import com.cloud.doc.model.DocFile;
-import com.cloud.doc.util.DocUtil;
-import com.cloud.platform.Constants;
-import com.cloud.platform.DocConstants;
-import com.cloud.platform.IDao;
-import com.cloud.platform.SpringUtil;
-import com.cloud.platform.StringUtil;
-import com.cloud.platform.Tree;
-import com.cloud.security.model.Department;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 @Service
 public class DocStoreService {
