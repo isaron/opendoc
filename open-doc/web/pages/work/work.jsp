@@ -38,5 +38,7 @@
 
         <div class="title">我操作的文档</div>
 	</div>
+
+    <script>var isWorkspace = "Y";</script>
 </body>
 </html>

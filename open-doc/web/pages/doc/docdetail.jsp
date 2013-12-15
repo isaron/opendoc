@@ -19,7 +19,14 @@
 	<div class="wrapper">
 	
 		<div id="btnDiv">
-			<a href="<c:url value="/docstore/openDocstore.do?parentId=${param.parentId}" />" class="button button-rounded button-flat-primary">返回</a>
+            <c:if test="${param.isWorkspace == 'N'}">
+                <a href="<c:url value="/docstore/openDocstore.do?parentId=${param.parentId}" />" class="button button-rounded button-flat-primary">返回</a>
+            </c:if>
+
+            <c:if test="${param.isWorkspace == 'Y'}">
+                <a href="<c:url value="/work/openWork.do" />" class="button button-rounded button-flat-primary">返回</a>
+            </c:if>
+
 			<span class="button-split"></span>
 
             <c:if test="${doc.status == 0 && doc.isLatest == 'Y'}">

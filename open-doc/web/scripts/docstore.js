@@ -119,7 +119,7 @@ function enter($d) {
 	if($d.attr("sign") == "dir") {
 		reloadPage("docstore/openDocstore.do?parentId=" + $d.attr("id"));
 	} else {
-		reloadPage("docdetail/openDoc.do?docId=" + $d.attr("id") + "&parentId=" + $("#parentId").val());
+		reloadPage("docdetail/openDoc.do?docId=" + $d.attr("id") + "&parentId=" + $("#parentId").val() + "&isWorkspace=" + isWorkspace);
 	}
 }
 
