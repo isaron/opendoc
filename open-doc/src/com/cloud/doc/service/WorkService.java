@@ -23,9 +23,12 @@ public class WorkService {
      */
     public List<DocFile> searchOperateFiles() {
 
-        String hql = "";
+        String hql = "select f,a from DocFile f,Attach a,DocRecord r where f.id = a.entityId and f.id = r.docId"
+                + " and r.creator = ? and f.isLatest = ? order by r.createTime desc";
 
-        return null;
+        List<Object[]> list = dao.getAllByHql(hql, new Object[] {Constants.getLoginUserId(), Constants.VALID_YES});
+
+        return combineAttach(list);
     }
 
     /**
@@ -39,6 +42,17 @@ public class WorkService {
                 + " and f.isLatest = ? order by f.createTime desc";
 
         List<Object[]> list = dao.getAllByHql(hql, new Object[] {Constants.getLoginUserId(), Constants.VALID_YES});
+
+        return combineAttach(list);
+    }
+
+    /**
+     * combine attach info to docfile
+     *
+     * @param list
+     * @return
+     */
+    private List<DocFile> combineAttach(List<Object[]> list) {
 
         List<DocFile> uploadFiles = new ArrayList();
 
