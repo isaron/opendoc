@@ -44,7 +44,7 @@ public class DocOperateService {
 		newFile.setDocVersion(DocUtil.getVersion(false, originFile.getDocVersion()));
 		
 		newFile.setCreator(originFile.getCreator());
-		newFile.setCreateTime(new Date());
+		newFile.setCreateTime(originFile.getCreateTime());
 		
 		dao.saveObject(newFile);
 		

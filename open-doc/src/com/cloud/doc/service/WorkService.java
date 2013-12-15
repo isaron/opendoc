@@ -1,11 +1,13 @@
 package com.cloud.doc.service;
 
+import com.cloud.attach.Attach;
 import com.cloud.doc.model.DocFile;
 import com.cloud.platform.Constants;
 import com.cloud.platform.IDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -21,6 +23,21 @@ public class WorkService {
      */
     public List<DocFile> searchUploadFiles() {
 
-        return dao.getAllByHql("from DocFile where creator = ?", Constants.getLoginUserId());
+        String hql = "select f,a from DocFile f,Attach a where f.id = a.entityId and f.creator = ?"
+                + " and f.isLatest = ? order by f.createTime desc";
+
+        List<Object[]> list = dao.getAllByHql(hql, new Object[] {Constants.getLoginUserId(), Constants.VALID_YES});
+
+        List<DocFile> uploadFiles = new ArrayList();
+
+        for(Object[] obj : list) {
+            DocFile file = (DocFile) (obj[0]);
+            Attach attach = (Attach) (obj[1]);
+
+            file.setAttach(attach);
+            uploadFiles.add(file);
+        }
+
+        return uploadFiles;
     }
 }
