@@ -2,8 +2,10 @@ package com.cloud.doc.service;
 
 import java.util.Date;
 
+import com.cloud.doc.model.DocMark;
 import com.cloud.doc.model.DocRecord;
 import com.cloud.platform.*;
+import com.cloud.security.model.User;
 import org.quartz.SchedulerException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +19,35 @@ public class DocOperateService {
 
 	@Autowired
 	private IDao dao;
+
+    /**
+     * mark or unmark doc file
+     *
+     * @param isStar
+     * @param docFileId
+     */
+    public void starMark(boolean isStar, String docFileId) {
+
+        if(StringUtil.isNullOrEmpty(docFileId)) {
+            return;
+        }
+
+        if(isStar) {
+            DocMark mark = new DocMark();
+
+            User user = (User) dao.getObject(User.class, Constants.getLoginUserId());
+            mark.setUser(user);
+
+            DocFile file = (DocFile) dao.getObject(DocFile.class, docFileId);
+            mark.setFile(file);
+
+            dao.saveObject(mark);
+        }
+        else {
+            dao.removeByHql("delete from DocMark where user.id = ? and file.id = ?",
+                    new Object[] {Constants.getLoginUserId(), docFileId});
+        }
+    }
 	
 	/**
 	 * check in file

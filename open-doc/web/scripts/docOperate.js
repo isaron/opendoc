@@ -40,3 +40,15 @@ function checkout(docFileId) {
 function checkin() {
 	$("#checkinDialog").dialog("open");
 }
+
+/**
+ * star or unstar doc
+ *
+ * @param isStar
+ * @param docId
+ */
+function starDoc(isStar, docFileId) {
+    _remoteCall("docop/starMark.do", {isStar: isStar ? "Y" : "N", docFileId : docFileId}, function(data) {
+        alert(111);
+    });
+}

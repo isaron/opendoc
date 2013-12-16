@@ -23,7 +23,8 @@ public class WorkService {
      */
     public List<DocFile> searchOperateFiles() {
 
-        String hql = "select f,a from DocFile f,Attach a,DocRecord r where f.id = a.entityId and f.id = r.docId"
+        String hql = "select distinct f,a from DocFile f,Attach a,DocRecord r where f.id = a.entityId"
+                + " and f.uniqueId = (select f2.uniqueId from DocFile f2 where f2.id = r.docId)"
                 + " and r.creator = ? and f.isLatest = ? order by r.createTime desc";
 
         List<Object[]> list = dao.getAllByHql(hql, new Object[] {Constants.getLoginUserId(), Constants.VALID_YES});

@@ -48,6 +48,10 @@
 			<span class="button-split"></span>
 			
 			<a id="downloadBtn" href="<c:url value="/download.action?fileName=${doc.attach.id}.${doc.attach.extendType}&realName=${doc.name}" />" class="button button-rounded button-flat-primary">下载文档</a>
+
+            <span class="button-split"></span>
+
+            <img src="<c:url value="/img/unstar.png" />" onclick="starDoc(true, $('#entityId').val());" style="cursor: pointer;" /> 标注
 		</div>
 		
         <div class="row-fluid">

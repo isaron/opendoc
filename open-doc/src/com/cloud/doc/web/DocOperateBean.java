@@ -18,6 +18,18 @@ public class DocOperateBean {
 
 	@Autowired
 	private DocOperateService docOperateService;
+
+    /**
+     * mark or unmark doc file
+     *
+     * @param isStar
+     * @param docFileId
+     */
+    @RequestMapping("/starMark.do")
+    public void starMark(@RequestParam("isStar") String isStar, @RequestParam("docFileId") String docFileId) {
+
+        docOperateService.starMark(Constants.VALID_YES.equals(isStar), docFileId);
+    }
 	
 	/**
 	 * check in file
