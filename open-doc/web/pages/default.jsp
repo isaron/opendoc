@@ -87,7 +87,7 @@
 	</div>
 	
 	<script>
-		var basePath = "${BASEPATH}";
+		var basePath = "${BASEPATH}", messenger = Messenger();
 		
 		// init logo text
 		_remoteCall("system/getSystemName.do", null, function(data) {

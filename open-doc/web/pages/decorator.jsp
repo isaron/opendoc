@@ -14,6 +14,8 @@
 	<link rel="stylesheet" type="text/css" href="<c:url value="/css/icheck/blue.css" />">
 	<link rel="stylesheet" type="text/css" href="<c:url value="/css/buttons/css/font-awesome.min.css" />">
 	<link rel="stylesheet" type="text/css" href="<c:url value="/css/buttons/css/buttons.css" />">
+    <link rel="stylesheet" type="text/css" href="<c:url value="/css/messenger.css" />">
+    <link rel="stylesheet" type="text/css" href="<c:url value="/css/messenger-theme-future.css" />">
 	<link rel="stylesheet" type="text/css" href="<c:url value="/css/cloud.css" />">
 	<link rel="stylesheet" type="text/css" href="<c:url value="/css/cloud.table.css" />">
 	<link rel="stylesheet" type="text/css" href="<c:url value="/css/doc.cloud.css" />">
@@ -24,6 +26,8 @@
 	<script type="text/javascript" src="<c:url value="/scripts/underscore.js" />"></script>
 	<script type="text/javascript" src="<c:url value="/scripts/jquery-ui-1.10.0.custom.min.js" />"></script>
 	<script type="text/javascript" src="<c:url value="/scripts/jquery.icheck.js" />"></script>
+    <script type="text/javascript" src="<c:url value="/scripts/messenger.min.js" />"></script>
+    <script type="text/javascript" src="<c:url value="/scripts/messenger-theme-future.js" />"></script>
 	<script type="text/javascript" src="<c:url value="/scripts/cloud.js" />"></script>
 	<script type="text/javascript" src="<c:url value="/scripts/cloud.core.js" />"></script>
 	<script type="text/javascript" src="<c:url value="/scripts/cloud.jq.extend.js" />"></script>

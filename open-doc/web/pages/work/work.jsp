@@ -59,6 +59,6 @@
         </c:if>
 	</div>
 
-    <script>var isWorkspace = "Y";</script>
+    <script>var isWorkspace = "Y", isStore = false;</script>
 </body>
 </html>

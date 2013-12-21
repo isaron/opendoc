@@ -25,6 +25,7 @@ public class DocOperateBean {
      * @param isStar
      * @param docFileId
      */
+    @ResponseBody
     @RequestMapping("/starMark.do")
     public void starMark(@RequestParam("isStar") String isStar, @RequestParam("docFileId") String docFileId) {
 

@@ -74,6 +74,6 @@
 	<input id="parentId" type="hidden" value="${param.parentId}" />
 	<input id="grandId" type="hidden" value="${grandId}" />
 
-    <script>var isWorkspace = "N";</script>
+    <script>var isWorkspace = "N", isStore = true;</script>
 </body>
 </html>

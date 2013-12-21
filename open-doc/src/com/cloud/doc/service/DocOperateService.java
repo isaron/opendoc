@@ -1,6 +1,7 @@
 package com.cloud.doc.service;
 
 import java.util.Date;
+import java.util.List;
 
 import com.cloud.doc.model.DocMark;
 import com.cloud.doc.model.DocRecord;
@@ -19,6 +20,20 @@ public class DocOperateService {
 
 	@Autowired
 	private IDao dao;
+
+    /**
+     * get doc star status
+     *
+     * @param doc
+     * @return
+     */
+    public boolean getStarStatus(DocFile doc) {
+
+        String hql = "from DocMark where file.uniqueId = ?";
+        List list = dao.getAllByHql(hql, doc.getUniqueId());
+
+        return !list.isEmpty();
+    }
 
     /**
      * mark or unmark doc file

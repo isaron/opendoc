@@ -1,37 +1,39 @@
 var attachIds = [];
 
 $(function() {
-	// init button status
-	initBtnStatus("init");
-	
 	// bind body click event for update rename
 	$(document.body).click(function() { doRename(); });
-	
-	// init upload dialog
-	ppmDialog("#uploadDialog", "上传文件", {
-        "关闭": function() { $(this).dialog("close"); }
-	});
-	
-	// get attach size config
-	_remoteCall("system/getAttachConfig.do", null, function(size) {
-		
-		// init upload file
-		$("#file_upload").uploadify({
-			buttonText: "上传文件",
-			fileSizeLimit: size + "MB",
-			removeCompleted: false,
-			swf: parent.basePath + "/css/uploadify.swf",
-			uploader : parent.basePath + "upload.action" + getJSessionCookie(),
-			onUploadSuccess: function(file, data, response) {
-				attachIds.push(data);
-			},
-			onQueueComplete: function() {
-				_remoteCall("docstore/uploadFiles.do", {parentId: $("#parentId").val(), attachIds: attachIds.join(",")}, function() {
-					reloadPage();
-				});
-			}
-		});
-	});
+
+    // init button status
+    initBtnStatus("init");
+
+    if(isStore) {
+        // init upload dialog
+        ppmDialog("#uploadDialog", "上传文件", {
+            "关闭": function() { $(this).dialog("close"); }
+        });
+
+        // get attach size config
+        _remoteCall("system/getAttachConfig.do", null, function(size) {
+
+            // init upload file
+            $("#file_upload").uploadify({
+                buttonText: "上传文件",
+                fileSizeLimit: size + "MB",
+                removeCompleted: false,
+                swf: parent.basePath + "/css/uploadify.swf",
+                uploader : parent.basePath + "upload.action" + getJSessionCookie(),
+                onUploadSuccess: function(file, data, response) {
+                    attachIds.push(data);
+                },
+                onQueueComplete: function() {
+                    _remoteCall("docstore/uploadFiles.do", {parentId: $("#parentId").val(), attachIds: attachIds.join(",")}, function() {
+                        reloadPage();
+                    });
+                }
+            });
+        });
+    }
 });
 
 function initBtnStatus(situation, $d) {

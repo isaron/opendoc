@@ -51,7 +51,14 @@
 
             <span class="button-split"></span>
 
-            <img src="<c:url value="/img/unstar.png" />" onclick="starDoc(true, $('#entityId').val());" style="cursor: pointer;" /> 标注
+            <c:if test="${starStatus == 'N'}">
+                <img src="<c:url value="/img/unstar.png" />" onclick="starDoc(true, $('#entityId').val());" style="cursor: pointer;" /> 标注
+            </c:if>
+
+            <c:if test="${starStatus == 'Y'}">
+                <img src="<c:url value="/img/star.png" />" onclick="starDoc(false, $('#entityId').val());" style="cursor: pointer;" /> 取消标注
+            </c:if>
+
 		</div>
 		
         <div class="row-fluid">

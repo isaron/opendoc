@@ -4,6 +4,8 @@ import java.io.File;
 import java.util.List;
 
 import com.cloud.doc.model.DocRecord;
+import com.cloud.doc.service.DocOperateService;
+import com.cloud.platform.Constants;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,6 +28,9 @@ public class DocDetailBean {
 
 	@Autowired
 	private DocDetailService docDetailService;
+
+    @Autowired
+    private DocOperateService docOperateService;
 	
 	/**
 	 * get document convert status
@@ -62,6 +67,10 @@ public class DocDetailBean {
 
             List<DocFile> versionDocs = docDetailService.searchVersionDocs(docId);
             mv.addObject("versionDocs", versionDocs);
+
+            // get doc star status
+            boolean starStatus = docOperateService.getStarStatus(doc);
+            mv.addObject("starStatus", starStatus ? Constants.VALID_YES : Constants.VALID_NO);
 
 			// get text file content
 			if(DocConstants.isText(doc.getAttach().getExtendType())) {
