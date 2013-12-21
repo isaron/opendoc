@@ -140,7 +140,7 @@
 		}
 		// if is file that cann't preview
 		else if(extendFlag == "file_bk") {
-			html += "<div class='alert alert-info'>该文档不能在线浏览。</div>";
+			html += "<div class='alert alert-div alert-info'>该文档不能在线浏览。</div>";
 		}
 		// if is text file
 		else if(extendFlag == "txt_bk") {
@@ -154,7 +154,7 @@
 				if(status == "Y") {
 					initOnlineView(doc);
 				} else {
-					html += "<div class='alert alert-info'>该文档正在后台进行文档转换，这需要花费2~7分钟，过一段时间才能在线浏览。</div>";
+					html += "<div class='alert alert-div alert-info'>该文档正在后台进行文档转换，这需要花费2~7分钟，过一段时间才能在线浏览。</div>";
 				}
 			}, false, true);
 		}

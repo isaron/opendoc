@@ -105,6 +105,11 @@ function ppmConfirm(title, content, func) {
 	});
 }
 
+function showInfo(message) {
+    top.Messenger({extraClasses: 'messenger-fixed messenger-theme-air messenger-on-top'})
+        .post({message: message, hideAfter: 3});
+}
+
 function ppmDialog(selector, title, buttons) {
 	$(selector).dialog({
 		autoOpen: false,

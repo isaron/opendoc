@@ -49,7 +49,7 @@ function checkin() {
  */
 function starDoc(isStar, docFileId) {
     _remoteCall("docop/starMark.do", {isStar: isStar ? "Y" : "N", docFileId : docFileId}, function(data) {
-        top.Messenger().post("文档" + (isStar ? "" : "取消") + "标注成功。");
+        showInfo("文档" + (isStar ? "" : "取消") + "标注成功。");
         reloadPage();
     });
 }
