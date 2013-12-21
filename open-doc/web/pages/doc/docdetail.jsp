@@ -108,7 +108,7 @@
                                 <span>${file.name} [${file.docVersion}]</span>
                             </c:if>
                             <c:if test="${doc.docVersion != file.docVersion}">
-                                <a href="<c:url value="/docdetail/openDoc.do?docId=${file.id}&parentId=${param.parentId}" />">${file.name} [${file.docVersion}]</a>
+                                <a href="<c:url value="/docdetail/openDoc.do?docId=${file.id}&parentId=${param.parentId}&isWorkspace=${param.isWorkspace}" />">${file.name} [${file.docVersion}]</a>
                             </c:if>
                         </li>
                     </c:forEach>

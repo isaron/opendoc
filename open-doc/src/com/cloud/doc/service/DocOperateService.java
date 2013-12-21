@@ -59,8 +59,10 @@ public class DocOperateService {
             dao.saveObject(mark);
         }
         else {
-            dao.removeByHql("delete from DocMark where user.id = ? and file.id = ?",
-                    new Object[] {Constants.getLoginUserId(), docFileId});
+            DocFile file = (DocFile) dao.getObject(DocFile.class, docFileId);
+
+            dao.removeByHql("delete DocMark m where m.user.id = ? and m.file.id in (select f.id from DocFile f where f.uniqueId = ?)",
+                    new Object[] {Constants.getLoginUserId(), file.getUniqueId()});
         }
     }
 	
