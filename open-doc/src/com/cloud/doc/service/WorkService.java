@@ -17,6 +17,18 @@ public class WorkService {
     private IDao dao;
 
     /**
+     * search my mark files
+     *
+     * @return
+     */
+    public List<DocFile> searchStarFiles() {
+
+        String hql = "";
+
+        return null;
+    }
+
+    /**
      * search my operate files
      *
      * @return

@@ -27,6 +27,10 @@ public class WorkBean {
 
         ModelAndView mv = new ModelAndView("work/work");
 
+        // search my mark files
+        List<DocFile> starFiles = workService.searchStarFiles();
+        mv.addObject("starFiles", starFiles);
+
         // search my upload files
         List<DocFile> uploadFiles = workService.searchUploadFiles();
         mv.addObject("uploadFiles", uploadFiles);
