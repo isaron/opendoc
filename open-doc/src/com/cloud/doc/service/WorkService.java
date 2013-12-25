@@ -23,9 +23,12 @@ public class WorkService {
      */
     public List<DocFile> searchStarFiles() {
 
-        String hql = "";
+        String hql = "select distinct f,a from DocFile f,Attach a,DocMark m where f.id = a.entityId"
+                + " and f.uniqueId = m.file.uniqueId and m.user.id = ? and f.isLatest = ? order by f.createTime desc";
 
-        return null;
+        List<Object[]> list = dao.getAllByHql(hql, new Object[] {Constants.getLoginUserId(), Constants.VALID_YES});
+
+        return combineAttach(list);
     }
 
     /**

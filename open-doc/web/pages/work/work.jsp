@@ -14,6 +14,26 @@
 	<div class="wrapper">
 		<div class="title">我标注的文档</div>
 
+        <c:forEach items="${starFiles}" var="file">
+            <div id="${file.id}" sign="file" class="attach_box" onclick="selectDoc($(this));" ondblclick="enter($(this));" storeFileName="${file.attach.id}.${file.attach.extendType}" realFileName="${file.name}">
+                <div class="attach_img">
+                    <c:if test="${fn:toUpperCase(file.attach.extendType) == 'JPG' || fn:toUpperCase(file.attach.extendType) == 'JPEG' || fn:toUpperCase(file.attach.extendType) == 'GIF' || fn:toUpperCase(file.attach.extendType) == 'PNG' || fn:toUpperCase(file.attach.extendType) == 'BMP'}">
+                        <img src="<c:url value="/upload/${file.attach.id}.${file.attach.extendType}" />" />
+                    </c:if>
+                    <c:if test="${!(fn:toUpperCase(file.attach.extendType) == 'JPG' || fn:toUpperCase(file.attach.extendType) == 'JPEG' || fn:toUpperCase(file.attach.extendType) == 'GIF' || fn:toUpperCase(file.attach.extendType) == 'PNG' || fn:toUpperCase(file.attach.extendType) == 'BMP')}">
+                        <div class="<cloud:fileImg extend="${file.attach.extendType}" />">
+                            <c:if test="${file.status == 1}"><img src="<c:url value="/img/refresh.png" />" class="checkout-img" title="已检出" /></c:if>
+                        </div>
+                    </c:if>
+                </div>
+                <div class="attach_name" ondblclick="rename();" onmouseover="this.title=this.innerText">${file.name}</div>
+            </div>
+        </c:forEach>
+
+        <c:if test="${starFiles == null || fn:length(starFiles) == 0}">
+            <div style="margin-left: 20px;">无</div>
+        </c:if>
+
         <div class="title">我上传的文档</div>
 
         <c:forEach items="${uploadFiles}" var="file">
