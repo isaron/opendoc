@@ -8,6 +8,8 @@ public class DocUtil {
 	
 	public static final int DOC_STATUS_NORMAL = 0;
 	public static final int DOC_STATUS_CHECKOUT = 1;
+
+    public static final int WORK_FILE_SIZE = 10;
 	
 	/**
 	 * get doc file version

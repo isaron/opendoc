@@ -90,7 +90,7 @@ public class CoreDao extends HibernateDaoSupport implements IDao {
 			
 			public Object doInHibernate(Session session) throws HibernateException, SQLException {
 				Query query = session.createQuery(hql);
-				
+
 				query.setFirstResult((page - 1) * size);
 				query.setMaxResults(size);
 				
@@ -100,6 +100,52 @@ public class CoreDao extends HibernateDaoSupport implements IDao {
 		
 		return list;
 	}
+
+    public List getPageByHql(final String hql, final Object[] params, SearchVo searchVo) {
+
+        // init search vo
+        if(searchVo == null) {
+            searchVo = new SearchVo();
+        }
+
+        final int page = searchVo.getPage();
+        final int size = searchVo.getPageSize();
+
+        // get result count
+        List list = getAllByHql(hql, params);
+
+        // if search all, return all list directly
+        if(size == -1) {
+            return list;
+        }
+
+        if(list.isEmpty()) {
+            searchVo.setPageNum(1);
+        } else if(list.size() % searchVo.getPageSize() == 0) {
+            searchVo.setPageNum(list.size() / searchVo.getPageSize());
+        } else {
+            searchVo.setPageNum(list.size() / searchVo.getPageSize() + 1);
+        }
+
+        // get result page list
+        list = getHibernateTemplate().executeFind(new HibernateCallback() {
+
+            public Object doInHibernate(Session session) throws HibernateException, SQLException {
+                Query query = session.createQuery(hql);
+
+                for(int i = 0; i < params.length; i++) {
+                    query.setParameter(i, params[i]);
+                }
+
+                query.setFirstResult((page - 1) * size);
+                query.setMaxResults(size);
+
+                return query.list();
+            }
+        });
+
+        return list;
+    }
 	
 	public void removeObject(Object entity) {
 		getHibernateTemplate().delete(entity);

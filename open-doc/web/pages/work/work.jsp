@@ -8,10 +8,14 @@
 <html>
 <head>
     <script type="text/javascript" src="<c:url value="/scripts/docstore.js" />"></script>
+    <style>
+        .more-div {padding-left: 880px;}
+        .more-div span {cursor: pointer;text-decoration: underline;}
+    </style>
 </head>
 
 <body>
-	<div class="wrapper">
+	<div class="wrapper" style="max-width: 950px;">
 		<div class="title">我标注的文档</div>
 
         <c:forEach items="${starFiles}" var="file">
@@ -29,6 +33,10 @@
                 <div class="attach_name" ondblclick="rename();" onmouseover="this.title=this.innerText">${file.name}</div>
             </div>
         </c:forEach>
+
+        <c:if test="${starMore == 'Y'}">
+            <div class="more-div"><span onclick="showMore(1);">更多</span></div>
+        </c:if>
 
         <c:if test="${starFiles == null || fn:length(starFiles) == 0}">
             <div style="margin-left: 20px;">无</div>
@@ -52,6 +60,10 @@
             </div>
         </c:forEach>
 
+        <c:if test="${uploadMore == 'Y'}">
+            <div class="more-div"><span onclick="showMore(2);">更多</span></div>
+        </c:if>
+
         <c:if test="${uploadFiles == null || fn:length(uploadFiles) == 0}">
             <div style="margin-left: 20px;">无</div>
         </c:if>
@@ -74,11 +86,22 @@
             </div>
         </c:forEach>
 
+        <c:if test="${operateMore == 'Y'}">
+            <div class="more-div"><span onclick="showMore(3);">更多</span></div>
+        </c:if>
+
         <c:if test="${operateFiles == null || fn:length(operateFiles) == 0}">
             <div style="margin-left: 20px;">无</div>
         </c:if>
 	</div>
 
-    <script>var isWorkspace = "Y", isStore = false;</script>
+    <script>
+        var isWorkspace = "Y", isStore = false;
+
+        function showMore(type) {
+            // openLoader();
+
+        }
+    </script>
 </body>
 </html>

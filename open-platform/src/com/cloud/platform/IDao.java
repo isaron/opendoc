@@ -19,6 +19,8 @@ public interface IDao {
     public List getAllByHql(String hql, Object[] params);
     
     public List getPageByHql(String hql, SearchVo searchVo);
+
+    public List getPageByHql(String hql, Object[] params, SearchVo searchVo);
     
     public void removeObject(Object entity);
     
