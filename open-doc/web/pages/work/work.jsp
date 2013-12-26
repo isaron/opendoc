@@ -35,11 +35,11 @@
         </c:forEach>
 
         <c:if test="${starMore == 'Y'}">
-            <div class="more-div"><span onclick="showMore(1);">更多</span></div>
+            <div class="more-div"><span onclick="showMore(0);">更多</span></div>
         </c:if>
 
         <c:if test="${starFiles == null || fn:length(starFiles) == 0}">
-            <div style="margin-left: 20px;">无</div>
+            <div style="text-align: center;margin: 20px;font-size: 17px;color: #bbb;">暂无标注文档</div>
         </c:if>
 
         <div class="title">我上传的文档</div>
@@ -61,11 +61,11 @@
         </c:forEach>
 
         <c:if test="${uploadMore == 'Y'}">
-            <div class="more-div"><span onclick="showMore(2);">更多</span></div>
+            <div class="more-div"><span onclick="showMore(1);">更多</span></div>
         </c:if>
 
         <c:if test="${uploadFiles == null || fn:length(uploadFiles) == 0}">
-            <div style="margin-left: 20px;">无</div>
+            <div style="text-align: center;margin: 20px;font-size: 17px;color: #bbb;">暂无上传文档</div>
         </c:if>
 
         <div class="title">我操作的文档</div>
@@ -87,20 +87,46 @@
         </c:forEach>
 
         <c:if test="${operateMore == 'Y'}">
-            <div class="more-div"><span onclick="showMore(3);">更多</span></div>
+            <div class="more-div"><span onclick="showMore(2);">更多</span></div>
         </c:if>
 
         <c:if test="${operateFiles == null || fn:length(operateFiles) == 0}">
-            <div style="margin-left: 20px;">无</div>
+            <div style="text-align: center;margin: 20px;font-size: 17px;color: #bbb;">暂无操作文档</div>
         </c:if>
 	</div>
 
     <script>
-        var isWorkspace = "Y", isStore = false;
+        var isWorkspace = "Y", isStore = false, pages = [1, 1, 1];
 
         function showMore(type) {
             // openLoader();
+            _remoteCall("work/showMore.do", {type: type, page: pages[type]++}, function(data) {
+                alert(data);
+                /*var html = "", hasMore = data.hasMore, notes = data.notes;
 
+                for(var i in notes) {
+                    html += "<div class='record_box'>";
+                    html += "<div class='record_op'>";
+                    html += "<span>" + notes[i].creator + "</span>";
+                    html += "<span>备注</span>";
+                    html += "<span>" + getTimeStr(notes[i].createTime) + "</span>";
+                    html += "</div>";
+                    html += "<div class='record_note'>" + notes[i].note + "</div>";
+                    html += "</div>";
+                }
+
+                if(notePage == 2 && hasMore == "Y") {
+                    html += "<div id='hasMore' class='more' onclick='refreshNote();'>显示更多 <i class='icon-chevron-down' style='vertical-align: middle;margin-left: 3px;margin-bottom: 6px;'></i></div>";
+                } else if(hasMore == "N") {
+                    $("#hasMore").remove();
+                }
+
+                if(notePage == 2) { $("div.notes").html(html); } else { $("div.notes").append(html); }
+
+                $("#note").val("");*/
+                autoHeight();
+                closeLoader();
+            }, true);
         }
     </script>
 </body>
