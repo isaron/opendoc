@@ -18,6 +18,7 @@
 	<div class="wrapper" style="max-width: 950px;">
 		<div class="title">我标注的文档</div>
 
+        <div class="file-div">
         <c:forEach items="${starFiles}" var="file">
             <div id="${file.id}" sign="file" class="attach_box" onclick="selectDoc($(this));" ondblclick="enter($(this));" storeFileName="${file.attach.id}.${file.attach.extendType}" realFileName="${file.name}">
                 <div class="attach_img">
@@ -33,9 +34,10 @@
                 <div class="attach_name" ondblclick="rename();" onmouseover="this.title=this.innerText">${file.name}</div>
             </div>
         </c:forEach>
+        </div>
 
         <c:if test="${starMore == 'Y'}">
-            <div class="more-div"><span onclick="showMore(0);">更多</span></div>
+            <div class="more-div" type="0"><span onclick="showMore(0);">更多</span></div>
         </c:if>
 
         <c:if test="${starFiles == null || fn:length(starFiles) == 0}">
@@ -44,6 +46,7 @@
 
         <div class="title">我上传的文档</div>
 
+        <div class="file-div">
         <c:forEach items="${uploadFiles}" var="file">
             <div id="${file.id}" sign="file" class="attach_box" onclick="selectDoc($(this));" ondblclick="enter($(this));" storeFileName="${file.attach.id}.${file.attach.extendType}" realFileName="${file.name}">
                 <div class="attach_img">
@@ -59,9 +62,10 @@
                 <div class="attach_name" ondblclick="rename();" onmouseover="this.title=this.innerText">${file.name}</div>
             </div>
         </c:forEach>
+        </div>
 
         <c:if test="${uploadMore == 'Y'}">
-            <div class="more-div"><span onclick="showMore(1);">更多</span></div>
+            <div class="more-div" type="1"><span onclick="showMore(1);">更多</span></div>
         </c:if>
 
         <c:if test="${uploadFiles == null || fn:length(uploadFiles) == 0}">
@@ -70,6 +74,7 @@
 
         <div class="title">我操作的文档</div>
 
+        <div class="file-div">
         <c:forEach items="${operateFiles}" var="file">
             <div id="${file.id}" sign="file" class="attach_box" onclick="selectDoc($(this));" ondblclick="enter($(this));" storeFileName="${file.attach.id}.${file.attach.extendType}" realFileName="${file.name}">
                 <div class="attach_img">
@@ -85,9 +90,10 @@
                 <div class="attach_name" ondblclick="rename();" onmouseover="this.title=this.innerText">${file.name}</div>
             </div>
         </c:forEach>
+        </div>
 
         <c:if test="${operateMore == 'Y'}">
-            <div class="more-div"><span onclick="showMore(2);">更多</span></div>
+            <div class="more-div" type="2"><span onclick="showMore(2);">更多</span></div>
         </c:if>
 
         <c:if test="${operateFiles == null || fn:length(operateFiles) == 0}">
@@ -100,30 +106,32 @@
 
         function showMore(type) {
             // openLoader();
-            _remoteCall("work/showMore.do", {type: type, page: pages[type]++}, function(data) {
-                alert(data);
-                /*var html = "", hasMore = data.hasMore, notes = data.notes;
+            _remoteCall("work/showMore.do", {type: type, page: ++pages[type]}, function(data) {
+                console.info(data);
+                var html = "", hasMore = data.hasMore, files = data.files;
 
-                for(var i in notes) {
-                    html += "<div class='record_box'>";
-                    html += "<div class='record_op'>";
-                    html += "<span>" + notes[i].creator + "</span>";
-                    html += "<span>备注</span>";
-                    html += "<span>" + getTimeStr(notes[i].createTime) + "</span>";
+                for(var i in files) {
+                    var f = files[i], a = f.attach;
+
+                    html += "<div id='" + f.id + "' sign='file' class='attach_box' onclick='selectDoc($(this));' ondblclick='enter($(this));' storeFileName='" + a.id + "." + a.extendType + "' realFileName='" + f.name + "'>";
+                    html += "<div class='attach_img'>";
+
+                    if(isFileImg(a.extendType)) {
+                        html += "<img src='" + top.basePath + "upload/" + a.id + "." + a.extendType + "' />";
+                    } else {
+                        html += "<div class='" + f.fileBgStyle + "'>";
+                        if(f.status == 1)  html += "<img src='" + top.basePath + "img/refresh.png' class='checkout-img' title='已检出' />";
+                        html += "</div>";
+                    }
+
                     html += "</div>";
-                    html += "<div class='record_note'>" + notes[i].note + "</div>";
+                    html += "<div class='attach_name' ondblclick='rename();' onmouseover='this.title=this.innerText'>" + f.name + "</div>";
                     html += "</div>";
                 }
 
-                if(notePage == 2 && hasMore == "Y") {
-                    html += "<div id='hasMore' class='more' onclick='refreshNote();'>显示更多 <i class='icon-chevron-down' style='vertical-align: middle;margin-left: 3px;margin-bottom: 6px;'></i></div>";
-                } else if(hasMore == "N") {
-                    $("#hasMore").remove();
-                }
+                if(hasMore == "N")  $("div.more-div[type=" + type + "]").remove();
+                $("div.file-div:eq(" + type + ")").append(html);
 
-                if(notePage == 2) { $("div.notes").html(html); } else { $("div.notes").append(html); }
-
-                $("#note").val("");*/
                 autoHeight();
                 closeLoader();
             }, true);

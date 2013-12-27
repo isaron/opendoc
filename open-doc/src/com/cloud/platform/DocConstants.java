@@ -20,13 +20,48 @@ public class DocConstants implements ServletContextAware {
 	public static String ROOTPATH = System.getProperty("ppmdoc");
 	public static String UPLOAD_PATH = ROOTPATH + "upload/";
 	public static String TEMP_PATH = ROOTPATH + "temp/";
-	
+
 	/**
 	 * inject servlet context
 	 */
 	public void setServletContext(ServletContext servletContext) {
 		this.servletContext = servletContext;
 	}
+
+    /**
+     * get file background style class
+     *
+     * @param extend
+     * @return
+     */
+    public static String getFileBgStyle(String extend) throws IOException {
+
+        if(StringUtil.isNullOrEmpty(extend)) {
+            return "";
+        }
+
+        if("xls".equals(extend.toLowerCase()) || "xlsx".equals(extend.toLowerCase())) {
+            return "excel_bk";
+        }
+        else if("doc".equals(extend.toLowerCase()) || "docx".equals(extend.toLowerCase())) {
+            return "doc_bk";
+        }
+        else if("ppt".equals(extend.toLowerCase()) || "pptx".equals(extend.toLowerCase())) {
+            return "ppt_bk";
+        }
+        else if("pdf".equals(extend.toLowerCase())) {
+            return "pdf_bk";
+        }
+        else if(isText(extend)) {
+            return "txt_bk";
+        }
+        else if(Constants.isImage(extend)) {
+            return "";
+        }
+        else {
+            return "file_bk";
+        }
+    }
 	
 	/**
 	 * check if is office file

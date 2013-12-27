@@ -206,7 +206,7 @@ function getJSessionCookie() {
  * combine elements' ids
  * 
  * @param $els
- * @returns
+ * @return
  */
 function combineIds($els) {
 	if(!$els || $els.size() == 0)  return "";
@@ -215,6 +215,17 @@ function combineIds($els) {
 	$els.each(function() { ids.push($(this).attr("id") ? $(this).attr("id") : ""); });
 	
 	return ids.join(",");
+}
+
+/**
+ * check file is image file by file extend
+ *
+ * @param extendType
+ * @returns {boolean}
+ */
+function isFileImg(extendType) {
+    extendType = extendType.toUpperCase();
+    return extendType == "JPG" || extendType == "JPEG" || extendType == "GIF" || extendType == "PNG" || extendType == "BMP";
 }
 
 /**

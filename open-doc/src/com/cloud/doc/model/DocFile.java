@@ -22,9 +22,11 @@ public class DocFile extends Tree {
 
     private String creator;
 	private Date createTime;
-	
+
+    // transparent
 	private Attach attach;
     private boolean canCheckin;
+    private String fileBgStyle;
 
     @Column(length = 1)
 	public int getStatus() {
@@ -105,5 +107,14 @@ public class DocFile extends Tree {
 
     public void setCanCheckin(boolean canCheckin) {
         this.canCheckin = canCheckin;
+    }
+
+    @Transient
+    public String getFileBgStyle() {
+        return fileBgStyle;
+    }
+
+    public void setFileBgStyle(String fileBgStyle) {
+        this.fileBgStyle = fileBgStyle;
     }
 }
