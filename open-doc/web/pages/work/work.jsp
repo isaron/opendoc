@@ -105,7 +105,8 @@
         var isWorkspace = "Y", isStore = false, pages = [1, 1, 1];
 
         function showMore(type) {
-            // openLoader();
+            openLoader();
+
             _remoteCall("work/showMore.do", {type: type, page: ++pages[type]}, function(data) {
                 console.info(data);
                 var html = "", hasMore = data.hasMore, files = data.files;
