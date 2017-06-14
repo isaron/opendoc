@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/android-contact/android-contact.iml" filepath="$PROJECT_DIR$/android-contact/android-contact.iml" />
+      <module fileurl="file://$PROJECT_DIR$/open-doc/open-doc.iml" filepath="$PROJECT_DIR$/open-doc/open-doc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/open-platform/open-platform.iml" filepath="$PROJECT_DIR$/open-platform/open-platform.iml" />
+    </modules>
+  </component>
+</project>
