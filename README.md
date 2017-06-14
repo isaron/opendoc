@@ -11,13 +11,13 @@ Which forked from https://git.oschina.net/ppm/ppm-open.git. Thanks very much for
 
 --------------------------------------------
 
-# PPM开源项目
+## PPM开源项目
 
 PPM项目主页：http://www.ppm123.cn
 
 PPM管理系统完全免费、开源，致力于研发国内最精致，最实用的个人、企业信息化管理系统，提高个人与企业的效率！
 
-# 源码使用
+## 源码使用
 
 PPM开发环境从MyEclipse迁移至Intellij Idea。
 
@@ -31,7 +31,7 @@ PPM开发环境从MyEclipse迁移至Intellij Idea。
 
 此项目包含了PPM技术平台和所有的PPM开源项目：
 
-# open-platform 平台系统
+## open-platform 平台系统
 
 1. Security权限模型
 
@@ -45,7 +45,7 @@ PPM开发环境从MyEclipse迁移至Intellij Idea。
 
 6. Tags自定义标签
 
-# open-doc 文档管理系统
+## open-doc 文档管理系统
 
 PPM Doc 文档管理系统是国内第一款开源的企业文档管理系统，旨在帮助企业摆脱VSS等粗糙的文档管理软件，方便、快捷管理并协同企业文档！
 
@@ -59,7 +59,7 @@ PPM Doc 文档管理系统是国内第一款开源的企业文档管理系统，
 
 5. 全文检索 -- 全文检索文本型文件及Office文件内部内容
 
-# android-contact 企业通讯录
+## android-contact 企业通讯录
 
 PPM Contact 企讯通旨在构建现代化的企业社交，通讯体系，提高企业内部沟通效率，互联企业人员及企业移动社交！
 
