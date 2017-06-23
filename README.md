@@ -29,6 +29,8 @@ PPM开发环境从MyEclipse迁移至Intellij Idea。
 
 4. 配置Intellij IDEA tomcat，部署运行。
 
+5. 初始登录用户为：admin，密码为：1
+
 此项目包含了PPM技术平台和所有的PPM开源项目：
 
 ## open-platform 平台系统
