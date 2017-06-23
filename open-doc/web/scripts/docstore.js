@@ -21,7 +21,7 @@ $(function() {
                 buttonText: "上传文件",
                 fileSizeLimit: size + "MB",
                 removeCompleted: false,
-                swf: parent.basePath + "/css/uploadify.swf",
+                swf: parent.basePath + "css/uploadify.swf",
                 uploader : parent.basePath + "upload.action" + getJSessionCookie(),
                 onUploadSuccess: function(file, data, response) {
                     attachIds.push(data);

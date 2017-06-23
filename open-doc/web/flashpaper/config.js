@@ -31,5 +31,5 @@ function initOnlineView(startDocument) {
 }
 
 function getDocumentUrl(document){
-	return top.basePath + "/pages/doc/swfData.jsp?doc={doc}&format={format}&page={page}".replace("{doc}",document);     
+	return top.basePath + "pages/doc/swfData.jsp?doc={doc}&format={format}&page={page}".replace("{doc}",document);
 }

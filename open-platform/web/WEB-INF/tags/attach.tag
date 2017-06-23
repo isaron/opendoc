@@ -15,8 +15,8 @@
 			$("#file_upload").uploadify({
 				buttonText: "上传",
 				removeCompleted: false,
-				swf: parent.basePath + "/css/uploadify.swf",
-				uploader : parent.basePath + "/upload.action?" + getJSessionCookie(),
+				swf: parent.basePath + "css/uploadify.swf",
+				uploader : parent.basePath + "upload.action?" + getJSessionCookie(),
 				onQueueComplete: function() {
 					parent.autoHeight();
 				},
