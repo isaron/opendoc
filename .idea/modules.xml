@@ -2,9 +2,12 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/android-contact/android-contact.iml" filepath="$PROJECT_DIR$/android-contact/android-contact.iml" />
-      <module fileurl="file://$PROJECT_DIR$/open-doc/open-doc.iml" filepath="$PROJECT_DIR$/open-doc/open-doc.iml" />
-      <module fileurl="file://$PROJECT_DIR$/open-platform/open-platform.iml" filepath="$PROJECT_DIR$/open-platform/open-platform.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android-contact/android-contact.iml" filepath="$PROJECT_DIR$/android-contact/android-contact.iml" group="android-contact" />
+      <module fileurl="file://$PROJECT_DIR$/open-doc/open-doc.iml" filepath="$PROJECT_DIR$/open-doc/open-doc.iml" group="open-doc" />
+      <module fileurl="file://$PROJECT_DIR$/open-platform/open-platform.iml" filepath="$PROJECT_DIR$/open-platform/open-platform.iml" group="open-platform" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/opendoc.iml" filepath="$PROJECT_DIR$/.idea/modules/opendoc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/opendoc_main.iml" filepath="$PROJECT_DIR$/.idea/modules/opendoc_main.iml" group="opendoc" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/opendoc_test.iml" filepath="$PROJECT_DIR$/.idea/modules/opendoc_test.iml" group="opendoc" />
     </modules>
   </component>
 </project>

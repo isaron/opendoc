@@ -1,11 +1,11 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
- 
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
 	<link href="/favicon.ico" type="image/ico" rel="shortcut icon" />
-	
+
 	<style>
 		body {font-size: 13px;}
 		table tr {height: 50px;}
@@ -22,7 +22,7 @@
 		<div class="span4" style="padding: 0 90px;">
 			<img src="img/logo.png" />
 		</div>
-		
+
 		<div class="span8" style="text-align: center;">
 			<form action="j_spring_security_check" method="POST">
 			<table style="font-size: 13px;margin: 0 auto;">
@@ -46,13 +46,13 @@
 			</form>
 		</div>
 	</div>
-	
+
 	<div id="navTip" style="text-align: center;color: white;font-size: 12px;background: #00adef;padding-bottom: 10px;">
-		PPM关注您的用户体验，推荐你使用最流行，最前端的Chrome浏览器 &nbsp;&nbsp; <a href="http://pan.baidu.com/s/1sZjY3" target="_blank" style="color: white;text-decoration: underline;">下载Chrome</a>
+		PPM关注您的用户体验，推荐你使用最流行，最前端的Chrome浏览器
 	</div>
-	
+
 	<div style="padding-top: 30px;text-align: center;color: #999;font-size: 12px;">
-		Copyright @2013 PPM 版权所有. &nbsp;&nbsp; <a href="http://www.ppm123.cn" target="_blank">PPM项目网站</a> ｜ <a href="http://www.ppm123.cn/bbs/forum.php" target="_blank">问题反馈</a> ｜ <a href="#">移动APP</a> &nbsp;&nbsp; 粤ICP备13023285号
+		Copyright @2013 PPM 版权所有. &nbsp;&nbsp; Copyright @2017 isarbor@github.com
 	</div>
 </body>
 </html>

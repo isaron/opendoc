@@ -1,0 +1,3 @@
+archivesBaseName = 'ppm-platform'
+
+apply plugin: 'ant'
