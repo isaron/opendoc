@@ -1,0 +1,4 @@
+rootProject.name = 'opendoc'
+
+include 'open-doc'
+include 'open-platform'

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Gradle Imported" enabled="true">
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-configuration-processor/2.2.2.RELEASE/7287179587c8cb2e469ae5529338e958af9dff75/spring-boot-configuration-processor-2.2.2.RELEASE.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.10/625fc0055674dff70dbc76efa36d0f2c89b04a24/lombok-1.18.10.jar" />
+        </processorPath>
+        <module name="opendoc.open-platform.main" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="open-platform.main" target="1.8" />
+      <module name="open-platform.test" target="1.8" />
+      <module name="opendoc.open-do.main" target="1.8" />
+      <module name="opendoc.open-do.test" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

@@ -1,0 +1,34 @@
+group = 'org.cloudmarts'
+version = '0.0.1-SNAPSHOT'
+
+allprojects {
+    apply plugin: 'java'
+    group = 'org.cloudmarts'
+    version = '0.0.1-SNAPSHOT'
+}
+
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'maven-publish'
+    apply plugin: 'idea'
+    // apply plugin: 'eclipse'
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        implementation "javax.servlet:servlet-api:2.5"
+        testImplementation "junit:junit:4.12"
+    }
+
+    tasks.withType(JavaCompile) {
+        options.encoding = 'UTF-8'
+    }
+}
+
+project(':open-doc') {
+    dependencies {
+        implementation project(':open-platform')
+    }
+}
